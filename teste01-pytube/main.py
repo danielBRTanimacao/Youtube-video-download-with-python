@@ -1,10 +1,16 @@
 import os
+# import tkinter as tk
 from time import sleep
 from pytube import YouTube
 
-# link_youtube = str(input('Link: '))
-link_youtube = 'https://youtu.be/UQ-gEZoed-c?si=R_dn7GzE68-IRMNU'
-yt = YouTube(link_youtube)
+while True: 
+    try: # Adiciona a URl youtube a class Youtube
+        link_youtube = str(input('Link: '))
+        yt = YouTube(link_youtube)
+    except BaseException as error:
+        print(f'Ocorreu um erro {error}')
+    else:
+        break
 
 def title_(text: str) -> None:
     print('==='*20)
@@ -14,12 +20,13 @@ def title_(text: str) -> None:
 
 def downloading_video(streams_: yt) -> None:
     os.system('cls')
-    print('carregando...')
+    print('carregando...') # retorna todas as qualidades disponiveis no vídeo
     list_quality_video = streams_.streams.filter(file_extension='mp4').order_by('resolution')
     title_('Escolha a qualidade do vídeo!')
     for numbers, qualitys in enumerate(list_quality_video):
         print(f'Número {numbers+1} Qualidade {qualitys}')
     try:
+        # Escolha de resolução mais o download da mesma escolhida
         choice_resolution = str(input('qualidade do video resolução disponivel: '))
         print('Aguarde.... o download ira ser feito')
         stream_download = streams_.streams.get_by_resolution(choice_resolution)
@@ -34,9 +41,12 @@ def downloading_video(streams_: yt) -> None:
 def downloading_audio(audio_: yt) -> None:
     os.system('cls')
     print('O audio que sera baixado e o de melhor qualidade mp3 disponivel do vídeo')
+    # audio_download coletara a melhor qualidade possivel de audio e fara o download
     audio_download = audio_.streams.filter(only_audio=True).first()
     out_file_download = audio_download.download()
+    # name_base e o nome base do arquivo o out_point e o formato depois do ponto .mp3, .mp4 etc..
     name_base, out_point = os.path.splitext(out_file_download)
+    # remove formato anterior adiciona o formato mp3
     new_file_download = name_base + '.mp3'
     os.rename(out_file_download, new_file_download)
     print('Download concluido...')
