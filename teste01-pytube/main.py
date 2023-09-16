@@ -5,7 +5,18 @@ import tkinter as tk
 
 LINK_ = 'https://www.youtube.com/shorts/wS5guAl4T64'
 
-class Aplication:
+class Functions:
+    def send_link(self):
+        # self.send_
+        ...
+    def download_audio(self):
+        ...
+
+    def download_video(self):
+        ...
+
+
+class Aplication(Functions):
     def __init__(self) -> None:
         # Adiciona a URl youtube a class Youtube
         self.root = tk.Tk()
@@ -33,22 +44,15 @@ class Aplication:
         label.pack(pady=45, padx=20)
     
     def _send_link_widgets(self) -> None:
-        self.send = tk.Button(self.frame1, text='Enviar')
-        self.send.place(relx=.44, rely=.52, relwidth=.1, relheight=.15)
+        self.send_ = tk.Button(self.frame1, text='Enviar', bd=2, bg='#591C21', fg='white', command=self.send_link)
+        self.send_.place(relx=.44, rely=.52, relwidth=.1, relheight=.15)
         # entrada link
         self.link_entry = tk.Entry(self.frame1)
         self.link_entry.place(relx=.2, rely=.33, relwidth=.6, relheight=.15)
 
         # self._yt = YouTube(LINK_)
         # self._title_(f'Titulo do vídeo: ---> {self._yt.title} <---')
-    
-    def _download_video(self, streams):
-        pass
-
-    def _download_audio(self):
-        pass
 
 
 if __name__ == '__main__':
-    # Aplication(input('link youtube: '))
     Aplication()
