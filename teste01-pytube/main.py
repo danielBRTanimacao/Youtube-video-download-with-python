@@ -1,14 +1,20 @@
 # import os
 import tkinter as tk
-# from time import sleep
-# from pytube import YouTube
+from time import sleep
+from pytube import YouTube
 
 LINK_ = 'https://www.youtube.com/shorts/wS5guAl4T64'
 
 class Functions:
-    def send_link(self):
-        # self.send_
-        ...
+    def send_link(self) -> None:
+        youtube_video_link = self.link_entry.get()
+        try: # Adiciona a URl youtube a class Youtube
+            self.yt = YouTube(youtube_video_link)
+            name_video = self.yt.title
+            self._title_(f'Titulo do vídeo: {name_video}')
+        except BaseException:
+            self._title_(f'Ocorreu um erro! por favor tente de novo...')
+
     def download_audio(self):
         ...
 
