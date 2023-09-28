@@ -5,21 +5,16 @@ from pytube import YouTube
 
 LINK_ = 'https://www.youtube.com/shorts/wS5guAl4T64'
 
-class Functions:
+class Functions: #funções do app
     def send_link(self) -> None:
         youtube_video_link = self.link_entry.get()
+        # adquiri o link de entrada
         try: # Adiciona a URl youtube a class Youtube
             self.yt = YouTube(youtube_video_link)
             name_video = self.yt.title
-            self._title_(f'Titulo do vídeo: {name_video}')
+            self.label_text_ = tk.Label(self.frame1, text=f'Titulo do vídeo: {name_video}').pack(pady=45, padx=20)
         except BaseException:
-            self._title_(f'Ocorreu um erro! por favor tente de novo...')
-
-    def download_audio(self):
-        ...
-
-    def download_video(self):
-        ...
+            self.label_text_ = tk.Label(self.frame1, text=f'Ocorreu um erro! por favor tente de novo...').pack(pady=45, padx=20)
 
 
 class Aplication(Functions):
