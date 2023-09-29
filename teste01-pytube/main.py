@@ -1,20 +1,19 @@
 # import os
 import tkinter as tk
-from time import sleep
 from pytube import YouTube
 
 LINK_ = 'https://www.youtube.com/shorts/wS5guAl4T64'
-
+# self.label_text_ = 
 class Functions: #funções do app
-    def send_link(self) -> None:
+    def send_link(self) -> str:
         youtube_video_link = self.link_entry.get()
         # adquiri o link de entrada
         try: # Adiciona a URl youtube a class Youtube
             self.yt = YouTube(youtube_video_link)
             name_video = self.yt.title
-            self.label_text_ = tk.Label(self.frame1, text=f'Titulo do vídeo: {name_video}').pack(pady=45, padx=20)
-        except BaseException:
-            self.label_text_ = tk.Label(self.frame1, text=f'Ocorreu um erro! por favor tente de novo...').pack(pady=45, padx=20)
+            self._title_(text_=f'Titulo do vídeo: {name_video}')
+        except:
+            self._title_(text_=f'Ocorreu um erro! por favor tente de novo...')
 
 
 class Aplication(Functions):
@@ -40,9 +39,11 @@ class Aplication(Functions):
                                highlightbackground='#759fe6', highlightthickness=3)
         self.frame1.place(relx=.02, rely=.05, relwidth=.96, relheight=.46)
 
-    def _title_(self, text_: str) -> None:
+    def _title_(self, text_: str, _destroy=False) -> None:
         label = tk.Label(self.frame1, text=text_)
         label.pack(pady=45, padx=20)
+        if _destroy:
+            label.destroy()
     
     def _send_link_widgets(self) -> None:
         self.send_ = tk.Button(self.frame1, text='Enviar', bd=2, bg='#591C21', fg='white', command=self.send_link)
