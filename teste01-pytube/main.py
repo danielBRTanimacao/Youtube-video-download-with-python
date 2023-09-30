@@ -3,9 +3,9 @@ import tkinter as tk
 from pytube import YouTube
 
 LINK_ = 'https://www.youtube.com/shorts/wS5guAl4T64'
-# self.label_text_ = 
+
 class Functions: #funções do app
-    def send_link(self) -> str:
+    def send_link(self) -> bool:
         youtube_video_link = self.link_entry.get()
         # adquiri o link de entrada
         try: # Adiciona a URl youtube a class Youtube
@@ -13,12 +13,11 @@ class Functions: #funções do app
             name_video = self.yt.title
             self._title_(text_=f'Titulo do vídeo: {name_video}')
         except:
-            self._title_(text_=f'Ocorreu um erro! por favor tente de novo...')
+            self._title_(text_='Ocorreu um erro!')
 
 
 class Aplication(Functions):
     def __init__(self) -> None:
-        # Adiciona a URl youtube a class Youtube
         self.root = tk.Tk()
         self._screen()
         self._screen_frames()
@@ -39,7 +38,7 @@ class Aplication(Functions):
                                highlightbackground='#759fe6', highlightthickness=3)
         self.frame1.place(relx=.02, rely=.05, relwidth=.96, relheight=.46)
 
-    def _title_(self, text_: str, _destroy=False) -> None:
+    def _title_(self, text_: str, _destroy: bool = False) -> None:
         label = tk.Label(self.frame1, text=text_)
         label.pack(pady=45, padx=20)
         if _destroy:
@@ -51,9 +50,6 @@ class Aplication(Functions):
         # entrada link
         self.link_entry = tk.Entry(self.frame1)
         self.link_entry.place(relx=.2, rely=.33, relwidth=.6, relheight=.15)
-
-        # self._yt = YouTube(LINK_)
-        # self._title_(f'Titulo do vídeo: ---> {self._yt.title} <---')
 
 
 if __name__ == '__main__':
