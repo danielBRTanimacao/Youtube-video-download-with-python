@@ -5,13 +5,14 @@ from pytube import YouTube
 LINK_ = 'https://www.youtube.com/shorts/wS5guAl4T64'
 
 class Functions: #funções do app
-    def send_link(self) -> bool:
+    def send_link(self) -> None:
         youtube_video_link = self.link_entry.get()
         # adquiri o link de entrada
         try: # Adiciona a URl youtube a class Youtube
             self.yt = YouTube(youtube_video_link)
             name_video = self.yt.title
             self._title_(text_=f'Titulo do vídeo: {name_video}')
+            AplicationChoose()
         except:
             self._title_(text_='Ocorreu um erro!')
 
@@ -26,7 +27,7 @@ class Aplication(Functions):
         # executa loop
         self.root.mainloop()
     
-    def _screen(self) -> None:
+    def _screen(self, __title: str = None) -> None:
         self.title = self.root.title('Youtube vídeo downloader')
         self.root.geometry('700x500')
         self.root.resizable(True, True)
@@ -50,6 +51,15 @@ class Aplication(Functions):
         # entrada link
         self.link_entry = tk.Entry(self.frame1)
         self.link_entry.place(relx=.2, rely=.33, relwidth=.6, relheight=.15)
+
+
+class AplicationChoose(Aplication):
+    def __init__(self) -> None:
+        self.root = tk.Tk()
+        self._screen('Vídeo / Audio')
+        self._screen_frames()
+        self._title_('Qualidades de audio e vídeo para baixar')
+        self.root.mainloop()
 
 
 if __name__ == '__main__':
