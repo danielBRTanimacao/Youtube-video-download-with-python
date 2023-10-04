@@ -8,6 +8,7 @@ class Functions(): #funções do app
 
     def send_link(self) -> None:
         youtube_video_link = self.link_entry.get()
+        self.link_entry.delete(0)
         # adquiri o link de entrada
         # Adiciona a URl youtube a class Youtube
         try:
@@ -15,16 +16,21 @@ class Functions(): #funções do app
             name_title_video = self.yt.title
             self.options_download(name_title_video)
         except:
-            self.label_error = tk.Label(self.frame1, text='Erro por favor tente de novo!')
-            self.label_error.pack(pady=40, padx=40)
+            if not hasattr(self, 'label_error'):
+                self.root = tk.Tk()
+                self._screen()
+                self._screen_frames()
+                self.label_error = tk.Label(self.frame1, text='Erro por favor tente de novo!')
+                self.label_error.pack(pady=40, padx=40)
+                self.root.mainloop()
 
-    def options_download(self, _name_video):
-        self.label_correct_link = tk.Label(self.frame1, text=f'Titulo do vídeo {_name_video}')
+    def options_download(self, _title_video: str):
+        print('abriu esse')
+        self.send_.destroy()
+        self.link_entry.destroy()
+        self.label_title.destroy()
+        self.label_correct_link = tk.Label(self.frame1, text=f'Titulo do vídeo {_title_video}')
         self.label_correct_link.pack(pady=40, padx=40)
-        try: # se o label erro existir o apagara se não erro e lançado e logo apagado pelo finally
-            self.label_error.destroy()
-        finally: # evita que o erro duplique apagando o proprio
-            self.label_error.destroy()
         # self.send_link_widgets()
 
 
