@@ -19,10 +19,12 @@ class Functions(): #funções do app
             self.label_error.pack(pady=40, padx=40)
 
     def options_download(self, _name_video):
-        if self.label_error:
-            self.label_error.destroy()
         self.label_correct_link = tk.Label(self.frame1, text=f'Titulo do vídeo {_name_video}')
         self.label_correct_link.pack(pady=40, padx=40)
+        try: # se o label erro existir o apagara se não erro e lançado e logo apagado pelo finally
+            self.label_error.destroy()
+        finally: # evita que o erro duplique apagando o proprio
+            self.label_error.destroy()
         # self.send_link_widgets()
 
 
