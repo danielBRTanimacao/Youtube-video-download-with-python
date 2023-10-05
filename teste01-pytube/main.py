@@ -1,11 +1,13 @@
 # import os
 import tkinter as tk
+import pytube
+from tkinter import messagebox
 from pytube import YouTube
+
 
 LINK_ = 'https://www.youtube.com/shorts/wS5guAl4T64'
 
 class Functions(): #funções do app
-
     def send_link(self) -> None:
         youtube_video_link = self.link_entry.get()
         self.link_entry.delete(0)
@@ -15,23 +17,15 @@ class Functions(): #funções do app
             self.yt = YouTube(youtube_video_link)
             name_title_video = self.yt.title
             self.options_download(name_title_video)
-        except:
-            if not hasattr(self, 'label_error'):
-                self.root = tk.Tk()
-                self._screen()
-                self._screen_frames()
-                self.label_error = tk.Label(self.frame1, text='Erro por favor tente de novo!')
-                self.label_error.pack(pady=40, padx=40)
-                self.root.mainloop()
+        except pytube.exceptions.RegexMatchError:
+            messagebox.showerror('Error link', 'Erro por favor tente de novo!')
 
     def options_download(self, _title_video: str):
-        print('abriu esse')
         self.send_.destroy()
         self.link_entry.destroy()
         self.label_title.destroy()
         self.label_correct_link = tk.Label(self.frame1, text=f'Titulo do vídeo {_title_video}')
         self.label_correct_link.pack(pady=40, padx=40)
-        # self.send_link_widgets()
 
 
 class Aplication(Functions):
