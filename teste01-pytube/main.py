@@ -11,19 +11,21 @@ class Functions(): #funções do app
     def send_link(self) -> None:
         youtube_video_link = self.link_entry.get()
         self.link_entry.delete(0)
-        # adquiri o link de entrada
-        # Adiciona a URl youtube a class Youtube
+        # recebe o link de entrada
+        # Adiciona a URl youtube a class >>> Youtube <<<
         try:
             self.yt = YouTube(youtube_video_link)
             name_title_video = self.yt.title
-            self.options_download(name_title_video)
+            self.options_download(name_title_video) # function recebe titulo do vídeo
         except pytube.exceptions.RegexMatchError:
             messagebox.showerror('Error link', 'Erro por favor tente de novo!')
 
     def options_download(self, _title_video: str):
+        # elimina todos os textos e labels anteriores
         self.send_.destroy()
         self.link_entry.destroy()
         self.label_title.destroy()
+        # inicia uma nova caixa com os tipos de downloads disponiveis
         self.label_correct_link = tk.Label(self.frame1, text=f'Titulo do vídeo {_title_video}')
         self.label_correct_link.pack(pady=40, padx=40)
 
@@ -31,8 +33,8 @@ class Functions(): #funções do app
 class Aplication(Functions):
     def __init__(self) -> None:
         self.root = tk.Tk()
-        self._screen()
-        self._screen_frames()
+        self._screen() # tela principal junto a configurações basicas
+        self._screen_frames() # caixa principal da tela
         self._send_link_widgets()
         # executa loop
         self.root.mainloop()
@@ -51,6 +53,7 @@ class Aplication(Functions):
         self.frame1.place(relx=.02, rely=.05, relwidth=.96, relheight=.9)
     
     def _send_link_widgets(self) -> None:
+        # Botão para enviar o link str
         self.send_ = tk.Button(self.frame1, text='Enviar', bd=2, bg='#c7310c', fg='#fff', command=self.send_link)
         self.send_.place(relx=.44, rely=.45, relwidth=.15, relheight=.15)
         # entrada link
