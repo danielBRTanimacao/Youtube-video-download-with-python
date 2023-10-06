@@ -28,6 +28,13 @@ class Functions(): #funções do app
         # inicia uma nova caixa com os tipos de downloads disponiveis
         self.label_correct_link = tk.Label(self.frame1, text=f'Titulo do vídeo {_title_video}')
         self.label_correct_link.pack(pady=40, padx=40)
+        self.download_video()
+    
+    def download_video(self):
+        list_quality_video = self.yt.streams.filter(file_extension='mp4').order_by('resolution')
+        for qualitys in enumerate(list_quality_video):
+            label_qualitys_list = tk.Label(self.frame1, text=f'{qualitys}')
+            label_qualitys_list.pack(pady=10, padx=10)
 
 
 class Aplication(Functions):
