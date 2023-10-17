@@ -20,7 +20,7 @@ class Functions(): #funções do app
         except pytube.exceptions.RegexMatchError:
             messagebox.showerror('Error link', 'Erro por favor tente de novo!')
 
-    def options_download(self, _title_video: str):
+    def options_download(self, _title_video: str) -> None:
         # elimina todos os textos e labels anteriores
         self.send_.destroy()
         self.link_entry.destroy()
@@ -31,10 +31,8 @@ class Functions(): #funções do app
         self.download_video()
     
     def download_video(self):
-        list_quality_video = self.yt.streams.filter(file_extension='mp4').order_by('resolution')
-        for qualitys in enumerate(list_quality_video):
-            label_qualitys_list = tk.Label(self.frame1, text=f'{qualitys}')
-            label_qualitys_list.pack(pady=10, padx=10)
+        self.label_resolution = tk.Label(self.frame1, text=self.yt.streams.get_highest_resolution())
+        self.label_resolution.pack(pady=40, padx=40)
 
 
 class Aplication(Functions):
