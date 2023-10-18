@@ -1,13 +1,14 @@
 # import os
 import tkinter as tk
 import pytube
+import os
 from tkinter import messagebox
 from pytube import YouTube
 
 
 LINK_ = 'https://www.youtube.com/shorts/wS5guAl4T64'
 
-class Functions(): #funções do app
+class Functions: #funções do app
     def send_link(self) -> None:
         youtube_video_link = self.link_entry.get()
         self.link_entry.delete(0)
@@ -29,10 +30,21 @@ class Functions(): #funções do app
         self.label_correct_link = tk.Label(self.frame1, text=f'Titulo do vídeo {_title_video}')
         self.label_correct_link.pack(pady=40, padx=40)
         self.download_video()
+        self.download_audio()
     
     def download_video(self):
         self.label_resolution = tk.Label(self.frame1, text=self.yt.streams.get_highest_resolution())
         self.label_resolution.pack(pady=40, padx=40)
+    
+    def download_audio(self):
+        self.label_audio = tk.Label(self.frame1, text=self.yt.streams.filter(only_audio=True).first())
+        self.label_audio.pack(pady=40, padx=40)
+        # baixa o arquivo
+        out_file = self.yt.download()
+        # salva o arquivo em mp3
+        base, ext = os.path.splitext(out_file) 
+        new_file = base + '.mp3'
+        os.rename(out_file, new_file) 
 
 
 class Aplication(Functions):
