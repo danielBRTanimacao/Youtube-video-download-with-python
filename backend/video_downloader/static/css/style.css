@@ -1,0 +1,73 @@
+/*Configurações gerais*/
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Space Groteck";
+}
+
+@font-face {
+    font-family: "Space Groteck";
+    src: url(../fonts/SpaceGrotesk-Regular.woff);
+}
+
+/*Configurações cabeçalho*/
+.header-config {
+    background-color: #ededed;
+    padding: 20px;
+}
+
+.header-config img {
+    height: 3em;
+}
+
+.contacts {
+    float: right;
+    padding: 10px;
+    margin: 5px;
+}
+
+.a-config {
+    padding: 5px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.contacts a:hover {
+    background: rgb(209, 209, 209);
+    border-radius: 4px;
+}
+
+/*primeira seção configurações*/
+
+section, footer {
+    padding: 10px;
+    text-align: center;
+}
+
+.input-config {
+    padding: 20px;
+}
+
+.input-config input {
+    width: 50%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+}
+
+.button-send {
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+}
+
+.button-send:hover {
+    background-color: rgb(166, 11, 0);
+}
+/*Segunda seção configurações*/
+
+.second-section {
+    margin: 3em;
+}
