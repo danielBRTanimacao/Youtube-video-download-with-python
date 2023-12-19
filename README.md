@@ -10,4 +10,4 @@ imagem ilustrativa pode não ser a versão final:
 Esta versão estou utilizando Django ainda irei adicionar no repositorio
 
 imagem ilustrativa pode não ser a versão final:
-![img site](https://github.com/danielBRTanimacao/Youtube-video-download-with-python/assets/93400508/d0a3c423-9d08-4c68-8f1b-89fdff21ee36)
+
