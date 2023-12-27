@@ -1,7 +1,7 @@
 export default () => {
     return (
         <>
-            <Header />
+            <h1>Header</h1>
         </>
     );
 };

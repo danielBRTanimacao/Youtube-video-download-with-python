@@ -1,0 +1,25 @@
+/*Configuração geral*/
+:root {
+    --main-primary-color: #304ee4;
+    --main-secondary-color: #ee82bf;
+    --main-accent-color: #e85160;
+    --main-bg-color: #f3f5fd;
+    --main-text-color: #03081a;
+}
+
+* {
+    color: var(--main-text-color);
+    background-color: var(--main-bg-color);
+}
+
+/*Fonts customizadas*/
+@font-face {
+    font-family: "Oswald";
+    src: url("../fonts/Oswald-VariableFont_wght.ttf");
+}
+
+/*Principal section*/
+
+h1 {
+    font-family: "Oswald";
+}
