@@ -7,7 +7,7 @@
     --main-text-color: #03081a;
 }
 
-* {
+body {
     color: var(--main-text-color);
     background-color: var(--main-bg-color);
 }
@@ -22,4 +22,14 @@
 
 h1 {
     font-family: "Oswald";
+}
+
+/*Header config*/
+.bg-secondary-color {
+    background-color: var(--main-secondary-color);
+    color: var(--main-bg-color);
+}
+
+.link-color a {
+    color: var(--main-text-color);
 }
