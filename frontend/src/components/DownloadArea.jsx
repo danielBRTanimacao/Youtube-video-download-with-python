@@ -3,14 +3,19 @@ import { useState } from "react";
 import VideoDownloads from "./VideoDownloads.jsx";
 
 export default () => {
-    const [linkTxt, setLink] = useState(
-        ""
-        // "https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
-    );
+    const [linkTxt, setLink] = useState("");
+
+    const [ytError, setYtError] = useState(true);
 
     function cathLink() {
         let txtlink = document.querySelector("#linkCather").value;
-        setLink(txtlink);
+        const ytRegex =
+            /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/;
+        if (ytRegex.test(txtlink)) {
+            setLink(txtlink);
+        } else {
+            setYtError(false);
+        }
     }
 
     return (
@@ -41,7 +46,7 @@ export default () => {
                     </div>
                 </div>
             </section>
-            <VideoDownloads link={linkTxt} />
+            <VideoDownloads link={linkTxt} ytValid={ytError} />
         </>
     );
 };

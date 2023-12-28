@@ -1,13 +1,15 @@
-export default (linkprop, validprop) => {
-    if (validprop) {
+import ReactPlayer from "react-player";
+
+export default (linkprop) => {
+    if (linkprop.ytValid) {
         return (
             <>
-                <section>
+                <section className="text-center">
                     <h1 className="pb-5">
-                        downloads tips so aparece quando clicar kkk
+                        Coloque o link e diga se este e o seu vídeo
                     </h1>
-                    <div className="ratio ratio-16x9 container w-50">
-                        <iframe src={linkprop.link} allowFullScreen></iframe>
+                    <div className="container">
+                        <ReactPlayer url={linkprop.link} />
                     </div>
                     <div className="pt-5">links tipe download</div>
                 </section>
@@ -16,7 +18,12 @@ export default (linkprop, validprop) => {
     } else {
         return (
             <>
-                <h1>Deu ruim</h1>
+                <section className="text-center">
+                    <h1>
+                        Oops... pelo visto você não colocou um link valido...
+                        insira um link valido!
+                    </h1>
+                </section>
             </>
         );
     }
