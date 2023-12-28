@@ -6,3 +6,8 @@ E ainda esta em desenvolvimento uma versão que sera possivel não so baixar ví
 
 Imagem ilustrativa pode não ser a versão final:
 ![tkinter python](https://github.com/danielBRTanimacao/Youtube-video-download-with-python/assets/93400508/7108247c-a385-4d47-9cda-a3533d1cae95)
+
+## Versão Web
+
+Imagem ilustrativa pode não ser a versão final:
+![web yt download](https://github.com/danielBRTanimacao/Youtube-video-download-with-python/blob/main/img-site/yt-site.png)
