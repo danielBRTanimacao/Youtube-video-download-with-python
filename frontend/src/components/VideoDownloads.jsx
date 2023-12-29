@@ -9,20 +9,27 @@ export default (linkprop) => {
                         Coloque o link e diga se este e o seu vídeo
                     </h1>
                     <div className="container">
-                        <ReactPlayer url={linkprop.link} />
+                        <div>
+                            <ReactPlayer url={linkprop.link} />
+                        </div>
                     </div>
-                    <div className="pt-5">links tipe download</div>
                 </section>
             </>
         );
     } else {
         return (
             <>
-                <section className="text-center">
+                <section className="text-center text-danger">
                     <h1>
                         Oops... pelo visto você não colocou um link valido...
                         insira um link valido!
                     </h1>
+                    <a
+                        href=""
+                        className="fs-1 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-danger"
+                    >
+                        RECARREGAR PAGINA
+                    </a>
                 </section>
             </>
         );
