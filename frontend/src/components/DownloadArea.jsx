@@ -1,25 +1,31 @@
 import { useState } from "react";
 
-import VideoDownloads from "./VideoDownloads.jsx";
+import ReactPlayer from "react-player";
 
 export default () => {
-    const [linkTxt, setLink] = useState("");
+    const [linkTxt, setLink] = useState(""); /*Coleta e seta o url*/
 
-    const [ytError, setYtError] = useState(true);
+    const [ytError, setYtError] = useState(false); /*Retorna uma url valida*/
 
     function cathLink() {
+        /*Funcão que adquire o link ainda em desenvolvimento */
         let txtlink = document.querySelector("#linkCather").value;
         const ytRegex =
+            /* Regex string formate validation*/
             /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/;
         if (ytRegex.test(txtlink)) {
-            setLink(txtlink);
+            setLink(
+                txtlink
+            ); /*se o formato for valido linkTXT recebe esta string*/
         } else {
+            /*se não ocorre o erro */
             setYtError(false);
         }
     }
 
     return (
         <>
+            {/*Seção principal para donwload*/}
             <section className="bg-yt">
                 <div className="p-5 container text-center">
                     <div className="d-flex justify-content-center">
@@ -46,7 +52,19 @@ export default () => {
                     </div>
                 </div>
             </section>
-            <VideoDownloads link={linkTxt} ytValid={ytError} />
+            {/*Seção principal para expecificar donwload*/}
+            <section className="text-center">
+                <h1 className="pb-5">
+                    Coloque o link e diga se este e o seu vídeo
+                </h1>
+                <div className="container">
+                    <div>
+                        <ReactPlayer url={linkTxt} />
+                    </div>
+                </div>
+            </section>
+
+            {/*FIM Seção principal para donwload*/}
         </>
     );
 };
