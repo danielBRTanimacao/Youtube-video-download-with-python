@@ -3,25 +3,35 @@ import { useState } from "react";
 import ReactPlayer from "react-player";
 
 export default () => {
-    const [linkTxt, setLink] = useState(""); /*Coleta e seta o url*/
+    const [ytVideo, setYtVideo] = useState(""); /*Coleta e seta o url ONCHANGE*/
 
-    const [ytError, setYtError] = useState(false); /*Retorna uma url valida*/
+    const [ytUrl, setYtUrl] = useState(false); /*Retorna uma url valida*/
 
-    function cathLink() {
-        /*Funcão que adquire o link ainda em desenvolvimento */
-        let txtlink = document.querySelector("#linkCather").value;
+    const [ytError, setYtError] =
+        useState(false); /*Retorna puro a validade do link */
+
+    const ytChange = (txt) => {
+        /*Funcão que adquire o link a cada mudança */
+        setYtVideo(txt.target.value);
+    };
+
+    const ytChangeSubmit = (link) => {
+        /*Seta a url para o video no YT */
+        link.preventDefault();
+        setYtUrl(ytVideo);
+
         const ytRegex =
             /* Regex string formate validation*/
             /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/;
-        if (ytRegex.test(txtlink)) {
-            setLink(
-                txtlink
-            ); /*se o formato for valido linkTXT recebe esta string*/
+        if (ytRegex.test(ytVideo)) {
+            /*Se ocorrer erro */
+            setYtUrl(ytVideo);
+            setYtError(false);
         } else {
             /*se não ocorre o erro */
-            setYtError(false);
+            setYtError(true);
         }
-    }
+    };
 
     return (
         <>
@@ -34,36 +44,44 @@ export default () => {
                             qualquer tipo de vídeo!
                         </h1>
                     </div>
-                    <div className=" row">
+                    <form className="row" onSubmit={ytChangeSubmit}>
                         <div className="pt-5 pb-3">
                             <input
                                 type="text"
                                 className="form-control form-control-lg col-md-6 shadow"
                                 placeholder="link..."
-                                id="linkCather"
+                                required
+                                onChange={ytChange}
                             />
                             <button
+                                type="submit"
                                 className="btn btn-lg btn-primary col-md-6 mt-3"
-                                onClick={cathLink}
                             >
                                 enviar
                             </button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </section>
-            {/*Seção principal para expecificar donwload*/}
-            <section className="text-center">
-                <h1 className="pb-5">
-                    Coloque o link e diga se este e o seu vídeo
-                </h1>
-                <div className="container">
-                    <div>
-                        <ReactPlayer url={linkTxt} />
+            {ytError && (
+                <section className="text-center">
+                    <h1 className="pb-5">
+                        ERRO POR FAVOR DIGITE UM LINK VALIDO
+                    </h1>
+                </section>
+            )}
+            {ytError || (
+                <section className="text-center">
+                    <h1 className="pb-5">
+                        Coloque o link e veja se este e o seu vídeo
+                    </h1>
+                    <div className="container">
+                        <div>
+                            <ReactPlayer url={ytUrl} controls />
+                        </div>
                     </div>
-                </div>
-            </section>
-
+                </section>
+            )}
             {/*FIM Seção principal para donwload*/}
         </>
     );
