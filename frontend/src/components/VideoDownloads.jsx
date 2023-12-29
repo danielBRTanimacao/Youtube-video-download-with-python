@@ -9,7 +9,7 @@ export default (linkprop) => {
                         Coloque o link e diga se este e o seu vídeo
                     </h1>
                     <div className="container">
-                        <div>
+                        <div className="">
                             <ReactPlayer url={linkprop.link} />
                         </div>
                     </div>
