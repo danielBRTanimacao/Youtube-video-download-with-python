@@ -1,36 +1,38 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
+import youtube_parser from "./utils/Utils";
+import axios from "axios";
 import ReactPlayer from "react-player";
 
 export default () => {
-    const [ytVideo, setYtVideo] = useState(""); /*Coleta e seta o url ONCHANGE*/
+    // Coleta o link do youtube
+    const inputUrlRef = useRef();
 
-    const [ytUrl, setYtUrl] = useState(false); /*Retorna uma url valida*/
+    const [ytUrl, setYtUrl] = useState(null);
 
-    const [ytError, setYtError] =
-        useState(false); /*Retorna puro a validade do link */
+    // recebe o envio do formulario com o link
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const ytID = youtube_parser(inputUrlRef.current.value);
 
-    const ytChange = (txt) => {
-        /*Funcão que adquire o link a cada mudança */
-        setYtVideo(txt.target.value);
-    };
+        const options = {
+            method: "GET",
+            url: "https://youtube-mp36.p.rapidapi.com/dl",
+            params: { id: "UxxajLWwzqY" },
+            headers: {
+                "X-RapidAPI-Key": import.meta.env.VITE_RAPID_API_KEY,
+                "X-RapidAPI-Host": "youtube-mp36.p.rapidapi.com"
+            },
+            params: {
+                id: ytID
+            }
+        };
 
-    const ytChangeSubmit = (link) => {
-        /*Seta a url para o video no YT */
-        link.preventDefault();
-        setYtUrl(ytVideo);
+        axios(options)
+            .then((res) => setYtUrl(res.data.link))
+            .catch((err) => console.log(err));
 
-        const ytRegex =
-            /* Regex string formate validation*/
-            /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/;
-        if (ytRegex.test(ytVideo)) {
-            /*Se ocorrer erro */
-            setYtUrl(ytVideo);
-            setYtError(false);
-        } else {
-            /*se não ocorre o erro */
-            setYtError(true);
-        }
+        inputUrlRef.current.value = "";
     };
 
     return (
@@ -44,14 +46,14 @@ export default () => {
                             qualquer tipo de vídeo!
                         </h1>
                     </div>
-                    <form className="row" onSubmit={ytChangeSubmit}>
+                    <form className="row" onSubmit={handleSubmit}>
                         <div className="pt-5 pb-3">
                             <input
+                                ref={inputUrlRef}
                                 type="text"
                                 className="form-control form-control-lg col-md-6 shadow"
                                 placeholder="link..."
                                 required
-                                onChange={ytChange}
                             />
                             <button
                                 type="submit"
@@ -63,26 +65,31 @@ export default () => {
                     </form>
                 </div>
             </section>
-            {ytError && (
-                <section className="text-center">
-                    <h1 className="pb-5">
-                        ERRO POR FAVOR DIGITE UM LINK VALIDO
-                    </h1>
-                </section>
-            )}
-            {ytError || (
-                <section className="text-center">
+            {ytUrl ? (
+                <section className="container text-center">
                     <h1 className="pb-5">
                         Coloque o link e veja se este e o seu vídeo
                     </h1>
-                    <div className="container">
-                        <div>
-                            <ReactPlayer url={ytUrl} controls />
-                        </div>
+                    <div className="d-flex justify-content-center">
+                        <ReactPlayer
+                            url="https://www.youtube.com/watch?v=PRfMwXCs3S8&t=487s"
+                            controls
+                        />
+                    </div>
+                    <div>
+                        <a
+                            target="_blank"
+                            rel="noreferrer"
+                            href={ytUrl}
+                            className="btn btn-light"
+                        >
+                            Baixe versão mp3
+                        </a>
                     </div>
                 </section>
+            ) : (
+                ""
             )}
-            {/*FIM Seção principal para donwload*/}
         </>
     );
 };
