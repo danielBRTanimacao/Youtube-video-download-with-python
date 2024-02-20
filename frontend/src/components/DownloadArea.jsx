@@ -1,9 +1,11 @@
+import { useState } from "react";
 import validateYtLink from "../assets/js/ValidateYtLink";
 
 export default () => {
+    const [link, setLink] = useState();
+
     const videoSubmited = () => {
-        const link = "https://www.youtube.com/watch?v=PAUlCK8kuGU";
-        console.log(validateYtLink(link));
+        validateYtLink(link);
     };
 
     return (
@@ -19,6 +21,7 @@ export default () => {
                     <div className="row">
                         <div className="pt-5 pb-3">
                             <input
+                                onChange={(e) => setLink(e.target.value)}
                                 type="text"
                                 className="form-control form-control-lg col-md-6 shadow"
                                 placeholder="link..."
