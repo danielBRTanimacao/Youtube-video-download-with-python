@@ -1,5 +1,11 @@
 export default (link) => {
-    const regexLink =
-        "http(?:s?)://(?:www.)?youtu(?:be.com/watch?v=|.be/)([w-_]*)(&(amp;)?‌​[w?‌​=]*)?";
-    console.log(link == regexLink);
+    const regexLink = "^(https?://)?(www.youtube.com|youtu.be)/.+$";
+    const classBtnDisable = document.querySelector("button#btn-for-submit");
+    if (link.match(regexLink)) {
+        return link.match(regexLink)[0];
+    }
+    classBtnDisable.innerHTML = "Link invalido";
+    classBtnDisable.classList.remove("btn-primary");
+    classBtnDisable.classList.add("btn-danger");
+    return false;
 };
