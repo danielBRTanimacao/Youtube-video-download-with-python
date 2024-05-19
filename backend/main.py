@@ -1,7 +1,12 @@
 from flask import Flask
 
+# init
 app = Flask(__name__)
 
+# route
 @app.route("/")
-def hello_world():
+def index():
     return "<p>Hello, World!</p>"
+
+# execute
+app.run(debug=True)
