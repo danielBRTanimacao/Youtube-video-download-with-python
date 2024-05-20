@@ -3,9 +3,16 @@
 }
 
 .pink-bg {
-    background-color: hotpink;
+    background-color: #e85160;
 }
 
 header a {
     color: white !important;
+}
+
+.center-itens {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
