@@ -10,9 +10,17 @@ header a {
     color: white !important;
 }
 
+header a:hover {
+    text-decoration: underline;
+}
+
 .center-itens {
     height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #f5f5f5 url("../imgs/yt-bg.jpg");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: contain;
 }

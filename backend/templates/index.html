@@ -43,7 +43,6 @@
                                 href="https://github.com/danielBRTanimacao/Youtube-video-download-with-python"
                                 class="nav-link"
                             >
-                                <i class="bi bi-github"></i>
                                 GitHub
                             </a>
                         </li>
@@ -52,7 +51,6 @@
                                 href="https://www.linkedin.com/in/daniel-tenório-6471b0244/"
                                 class="nav-link"
                             >
-                                <i class="bi bi-linkedin"></i>
                                 Linkedin
                             </a>
                         </li>
@@ -61,7 +59,6 @@
                                 href="https://www.instagram.com/danieltenorio35/"
                                 class="nav-link"
                             >
-                                <i class="bi bi-instagram"></i>
                                 Instagram
                             </a>
                         </li>
@@ -72,20 +69,26 @@
         <main>
             <div class="center-itens">
                 <form action="#">
-                    <h1>
-                        Insira um link e baixe
+                    <h1 class="pb-3 display-4">
+                        Insira o link e baixe
                         <span>Qualquer tipo de vídeo</span>
                     </h1>
-                    <input
-                        class="form-control"
-                        placeholder="link..."
-                        type="url"
-                        name="ytUrl"
-                        id="ytUrl"
-                    />
-                    <button class="btn btn-primary" type="submit">
-                        Enviar
-                    </button>
+                    <div class="py-2">
+                        <input
+                            class="form-control shadow-lg"
+                            placeholder="link..."
+                            type="url"
+                            name="q"
+                            id="ytUrlSearch"
+                            autofocus
+                            required
+                        />
+                    </div>
+                    <div class="py-2 text-center">
+                        <button class="btn btn-primary px-5" type="submit">
+                            Enviar
+                        </button>
+                    </div>
                 </form>
             </div>
             <div>Render videos</div>
