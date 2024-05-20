@@ -1,12 +1,8 @@
 from flask import Flask
+from routes.home import home_route
 
-# init
 app = Flask(__name__)
 
-# route
-@app.route("/")
-def index():
-    return "<p>Hello, World!</p>"
+app.register_blueprint(home_route)
 
-# execute
 app.run(debug=True)
