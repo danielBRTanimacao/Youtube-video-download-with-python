@@ -1,0 +1,11 @@
+:root {
+    --blue-darker: #0047ab;
+}
+
+.pink-bg {
+    background-color: hotpink;
+}
+
+header a {
+    color: white !important;
+}
