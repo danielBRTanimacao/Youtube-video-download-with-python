@@ -2,8 +2,22 @@
     --blue-darker: #0047ab;
 }
 
+@font-face {
+    font-family: "Poetsen";
+    src: url("../fonts/PoetsenOne-Regular.ttf");
+}
+
 .pink-bg {
     background-color: #e85160;
+}
+
+.blue-font {
+    color: var(--blue-darker);
+    font-family: "Poetsen";
+}
+
+.px-7 {
+    padding: 0.3rem 15rem !important;
 }
 
 header a {
@@ -23,4 +37,16 @@ header a:hover {
     background-position: right;
     background-repeat: no-repeat;
     background-size: contain;
+}
+
+@media (max-width: 991.98px) {
+    .px-7 {
+        padding: 0.3rem 10rem !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .px-7 {
+        padding: 0.3rem 6rem !important;
+    }
 }
