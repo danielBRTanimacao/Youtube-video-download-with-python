@@ -96,8 +96,11 @@
                     </div>
                 </form>
             </div>
-            <div>Render videos</div>
-            <div>{{ list_videos }}</div>
+            <article>
+                {%for indc in list_videos%}
+                <p>{{indc}}</p>
+                {%endfor%}
+            </article>
         </main>
         <footer>Final</footer>
 

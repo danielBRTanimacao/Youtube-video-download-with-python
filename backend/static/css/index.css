@@ -26,6 +26,7 @@ header a {
 
 header a:hover {
     text-decoration: underline;
+    text-underline-offset: 6px;
 }
 
 .center-itens {
