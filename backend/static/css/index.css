@@ -1,5 +1,7 @@
 :root {
     --blue-darker: #0047ab;
+    --dark-black: #475c6c;
+    --dark-red: #e85160;
 }
 
 @font-face {
@@ -8,7 +10,7 @@
 }
 
 .pink-bg {
-    background-color: #e85160;
+    background-color: var(--dark-red);
 }
 
 .blue-font {
@@ -27,6 +29,10 @@ header a {
 header a:hover {
     text-decoration: underline;
     text-underline-offset: 6px;
+}
+
+footer a {
+    color: var(--dark-black);
 }
 
 .center-itens {

@@ -27,7 +27,7 @@
     <body>
         <header class="pink-bg navbar navbar-expand-lg shadow-lg">
             <nav class="container-fluid container">
-                <a href="#" class="navbar-brand">
+                <a href="/" class="navbar-brand">
                     <i class="bi bi-youtube fs-1"></i>
                 </a>
                 <button
@@ -73,9 +73,9 @@
         </header>
         <main>
             <div class="center-itens">
-                <form action="#" method="POST">
-                    <h1 class="pb-3 display-4">
-                        Insira o link e baixe
+                <form action="/" method="POST">
+                    <h1 class="pb-3">
+                        <strong>Insira um link e baixe</strong>
                         <span class="blue-font">Qualquer tipo de vídeo</span>
                     </h1>
                     <div class="py-2">
@@ -97,7 +97,10 @@
                 </form>
             </div>
             {% if error %}
-                <article class="container text-center alert alert-danger" role="alert">
+                <article
+                    class="container text-center alert alert-danger"
+                    role="alert"
+                >
                     {{ error }}
                 </article>
             {% endif %}
@@ -133,9 +136,12 @@
                                             {{ indc.abr }} 
                                         {% endif %}
                                     </td>
-                                    <td>{{ indc.itag}}</td>
+                                    <td>{{ indc.itag }}</td>
                                     <td>
-                                        <button class="btn btn-primary">
+                                        <button
+                                            class="btn btn-primary"
+                                            onclick="onSubmitTag('{{ indc.itag }}')"
+                                        >
                                             Download
                                         </button>
                                     </td>
@@ -147,12 +153,45 @@
                 </article>
             {% endif %}
         </main>
-        <footer>Final</footer>
+        <footer class="d-flex justify-content-between py-3 my-4 border-top">
+            <div class="col-md-4 d-flex align-items-center">
+                <a
+                    href="/"
+                    class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1"
+                >
+                    <svg class="bi" width="30" height="24">
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                </a>
+                <span class="mb-3 mb-md-0 text-body-secondary"
+                    >© 2024, Inc</span
+                >
+            </div>
+
+            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                <a class="ms-3" href="https://github.com/danielBRTanimacao">
+                    <i class="bi bi-github"></i>
+                </a>
+                <a
+                    class="ms-3"
+                    href="https://www.linkedin.com/in/daniel-tenório-6471b0244/"
+                >
+                    <i class="bi bi-linkedin"></i>
+                </a>
+                <a
+                    class="mx-3"
+                    href="https://www.instagram.com/danieltenorio35/"
+                >
+                    <i class="bi bi-instagram"></i>
+                </a>
+            </ul>
+        </footer>
 
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"
         ></script>
+        <script src="{{ url_for('static', filename='js/index.js')}}"></script>
     </body>
 </html>
