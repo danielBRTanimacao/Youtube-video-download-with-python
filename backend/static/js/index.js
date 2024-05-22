@@ -1,3 +1,3 @@
-function onSubmitTag(iTag) {
+function submitTag(iTag) {
     console.log(iTag);
 }
