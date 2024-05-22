@@ -96,11 +96,56 @@
                     </div>
                 </form>
             </div>
-            <article>
-                {%for indc in list_videos%}
-                <p>{{indc}}</p>
-                {%endfor%}
-            </article>
+            {% if error %}
+                <article class="container text-center alert alert-danger" role="alert">
+                    {{ error }}
+                </article>
+            {% endif %}
+            {% if list_videos %}
+                <article>
+                    <aside class="text-center py-2">
+                        <img
+                            class="img-fluid"
+                            width="600"
+                            src="{{ url_thumb }}"
+                            alt="thumb"
+                        />
+                        <div class="lead fs-3 py-2">{{ title_video }}</div>
+                    </aside>
+                    <div class="py-2 container">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Tipo de video</th>
+                                    <th scope="col">Qualidade</th>
+                                    <th scope="col">Tag</th>
+                                    <th scope="col">Baixar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%for indc in list_videos%}
+                                <tr>
+                                    <th scope="row">{{ indc.mime_type }}</th>
+                                    <td>
+                                        {% if indc.res %} 
+                                            {{ indc.res }} 
+                                        {% else %}
+                                            {{ indc.abr }} 
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ indc.itag}}</td>
+                                    <td>
+                                        <button class="btn btn-primary">
+                                            Download
+                                        </button>
+                                    </td>
+                                </tr>
+                                {%endfor%}
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            {% endif %}
         </main>
         <footer>Final</footer>
 
