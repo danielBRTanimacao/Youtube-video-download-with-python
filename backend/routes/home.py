@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request
 from pytube import YouTube
-from pytube.exceptions import RegexMatchError
+from pytube.exceptions import RegexMatchError, AgeRestrictedError
 
 home_route = Blueprint('home', __name__)
 
@@ -18,4 +18,6 @@ def home():
             return render_template('index.html', error="Erro: URL invalida!")
         except AttributeError:
             return render_template('index.html', error="Erro: atributo invalido na URL, tente novamente!")
+        except AgeRestrictedError:
+            return render_template('index.html', error="Erro: vídeo bloqueado por idade, tente novamente!")
     return render_template('index.html')
