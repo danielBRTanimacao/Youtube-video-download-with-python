@@ -138,12 +138,15 @@
                                     </td>
                                     <td>{{ indc.itag }}</td>
                                     <td>
-                                        <button
-                                            class="btn btn-primary"
-                                            onclick="submitTag('{{ indc.itag }}')"
-                                        >
-                                            Download
-                                        </button>
+                                        <form action="/" method="GET">
+                                            <input type="hidden" name="r" value="{{ indc.itag }}">
+                                            <button
+                                                class="btn btn-primary"
+                                                type="submit"
+                                            >
+                                                Download
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                                 {%endfor%}
@@ -192,6 +195,5 @@
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"
         ></script>
-        <script src="{{ url_for('static', filename='js/index.js')}}"></script>
     </body>
 </html>

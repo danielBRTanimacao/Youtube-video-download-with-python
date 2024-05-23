@@ -22,4 +22,7 @@ def home():
             return render_template('index.html', error="Erro: vídeo bloqueado por idade, tente novamente!")
         except VideoUnavailable:
             return render_template('index.html', error="Erro: vídeo invalido, tente novamente!")
+    if request.method == "GET":
+        r = request.form.get('r')
+        print(r)
     return render_template('index.html')
