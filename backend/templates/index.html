@@ -90,7 +90,10 @@
                         />
                     </div>
                     <div class="py-2 text-center">
-                        <button class="btn btn-primary px-7" type="submit">
+                        <button
+                            class="btn btn-primary btn-larger"
+                            type="submit"
+                        >
                             Enviar
                         </button>
                     </div>
@@ -103,7 +106,7 @@
                 >
                     {{ error }}
                 </article>
-            {% endif %}
+            {% endif %} 
             {% if list_videos %}
                 <article>
                     <aside class="text-center py-2">
@@ -139,9 +142,17 @@
                                     <td>{{ indc.itag }}</td>
                                     <td>
                                         <form action="/download" method="POST">
-                                            <input type="hidden" name="r" value="{{ indc.itag }}">
+                                            <input
+                                                type="hidden"
+                                                name="r"
+                                                value="{{ indc.itag }}"
+                                            />
                                             <!-- codigo meio errado ajeitar depois -->
-                                            <input type="hidden" name="v" value="{{ url }}">
+                                            <input
+                                                type="hidden"
+                                                name="v"
+                                                value="{{ url }}"
+                                            />
                                             <button
                                                 class="btn btn-primary"
                                                 type="submit"
@@ -191,7 +202,6 @@
                 </a>
             </ul>
         </footer>
-
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

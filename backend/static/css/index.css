@@ -4,9 +4,29 @@
     --dark-red: #e85160;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 @font-face {
     font-family: "Poetsen";
     src: url("../fonts/PoetsenOne-Regular.ttf");
+}
+
+main {
+    height: 100dvh;
 }
 
 .pink-bg {
@@ -18,7 +38,7 @@
     font-family: "Poetsen";
 }
 
-.px-7 {
+.btn-larger {
     padding: 0.3rem 15rem !important;
 }
 
@@ -47,13 +67,13 @@ footer a {
 }
 
 @media (max-width: 991.98px) {
-    .px-7 {
+    .btn-larger {
         padding: 0.3rem 10rem !important;
     }
 }
 
 @media (max-width: 575.98px) {
-    .px-7 {
+    .btn-larger {
         padding: 0.3rem 6rem !important;
     }
 }
