@@ -5,7 +5,7 @@ import os
 from tkinter import messagebox
 from pytube import YouTube
 
-
+# maybe i'll refactor 
 LINK_ = 'https://www.youtube.com/shorts/wS5guAl4T64'
 
 class Functions: #funções do app

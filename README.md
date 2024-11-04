@@ -1,14 +1,18 @@
 # Youtube-video-download-with-python 🔴
 
-> Estou recriando um aplicativo utilizando o Tkinter e o Pytube, que são alguns módulos do Python. O objetivo é criar um projeto com uma interface para fazer download de vídeos e áudios do YouTube.
+> Estou recriando um aplicativo utilizando o PySide6 e o Pytube, que são alguns módulos do Python. O objetivo é criar um projeto com uma interface para fazer download de vídeos e áudios do YouTube.
 
 ### Imagem ilustrativa pode não ser a versão final:
 
-![tkinter python](https://github.com/danielBRTanimacao/Youtube-video-download-with-python/assets/93400508/7108247c-a385-4d47-9cda-a3533d1cae95)
+![pyside6 python](https://github.com/danielBRTanimacao/Youtube-video-download-with-python/assets/93400508/7108247c-a385-4d47-9cda-a3533d1cae95)
 
 ### Versão Web 🗺️
 
-![img](https://)
+![img-site](./img-site/yt-site.png)
+
+### Versão Mobile 🗺️
+
+![img-mobile]()
 
 ## Frameworks utilizadas 🛠️
 
