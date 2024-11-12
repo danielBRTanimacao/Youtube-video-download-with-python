@@ -4,6 +4,7 @@ from utils.validators import url_validator
 
 def main(page: ft.Page):
     page.title = "Youtube vídeo downloader"
+    title_principal = ft.Text(value="Youtube vídeo downloader")
     
     def submit_link(e):
         if not url_input.value or not url_validator(url_input.value):
@@ -16,6 +17,14 @@ def main(page: ft.Page):
 
     url_input = ft.TextField(label="URL youtube")
 
-    page.add(url_input, ft.ElevatedButton("Enviar", on_click=submit_link))
+    page.add(
+        ft.Container(
+        title_principal,
+        padding=15,
+        alignment=ft.alignment.center
+        ),
+        url_input, 
+        ft.ElevatedButton("Enviar", on_click=submit_link)
+    )
 
 ft.app(target=main)
