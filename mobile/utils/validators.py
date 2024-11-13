@@ -7,6 +7,7 @@ YOUTUBE_REGEX = compile(
 )
 
 def url_validator(url: str) -> bool:
+    assert isinstance(url, str), 'O valor "url" deve ser string!'
     if YOUTUBE_REGEX.match(url):
         return True
     return False

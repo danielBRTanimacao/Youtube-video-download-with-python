@@ -16,3 +16,4 @@ class VideoHandler:
     @property
     def get_title(self) -> str:
         return self._yt.title
+    
