@@ -1,6 +1,7 @@
 import flet as ft
 
 from utils.validators import url_validator
+from utils.downloader import VideoHandler
 
 def main(page: ft.Page):
     page.title = "Python vídeo downloader"
@@ -23,8 +24,10 @@ def main(page: ft.Page):
         else:
             link_video = url_input.value
             page.clean()
+            
+            yt_manager = VideoHandler(link_video)
             page.add(
-                ft.Text(f"Link do video: {link_video}")
+                ft.Text(f"Link do video: {link_video}\ntitulo do video: {yt_manager.get_title}")
             )
 
     url_input = ft.TextField(label="URL youtube")
