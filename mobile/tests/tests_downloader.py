@@ -1,7 +1,8 @@
 import unittest
 
-from mobile.utils.downloader import VideoHandler
-from mobile.utils.validators import url_validator
+from utils.downloader import VideoHandler
+from utils.validators import url_validator
+
 
 class VideoHandlerTestCase(unittest.TestCase):
     def setUp(self):
@@ -17,4 +18,4 @@ class VideoHandlerTestCase(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(verbosity=2)
