@@ -17,6 +17,9 @@ def main(page: ft.Page):
         alignment=ft.MainAxisAlignment.CENTER,
     )
 
+    def loading(e):
+        page.clean()
+
     def download_video_event(e):
         page.clean()
 
@@ -32,21 +35,24 @@ def main(page: ft.Page):
             page.update()
         else:
             link_video = url_input.value
+
             page.clean()
-            page.add(
-                ft.Column(
-                    [ft.ProgressRing(), ft.Text("Carregando...")], 
-                    horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-                ),
+            loading_component = ft.Column(
+                [ft.ProgressRing(), ft.Text("Carregando...")],
+                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
             )
+            page.add(loading_component)
+            page.update()
             
             yt_manager = VideoHandler(link_video)
+            page.clean()    
             page.add(
-                ft.Text(f"{yt_manager.get_title}\nlink thumb: {yt_manager.get_thumbnail_url}"),
-                ft.ElevatedButton("Baixar video", on_click=download_video_event),
-                ft.ElevatedButton("Baixar audio"),
+                ft.Text(f"Título: {yt_manager.get_title}\nThumbnail: {yt_manager.get_thumbnail_url}"),
+                ft.ElevatedButton("Baixar vídeo", on_click=download_video_event),
+                ft.ElevatedButton("Baixar áudio"),
                 ft.ElevatedButton("Baixar playlist")
             )
+            page.update()
 
     url_input = ft.TextField(label="URL youtube")
 
