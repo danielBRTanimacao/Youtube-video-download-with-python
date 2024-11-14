@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+
 import unittest
 
 from mobile.utils.downloader import VideoHandler
@@ -12,10 +16,10 @@ class VideoHandlerTestCase(unittest.TestCase):
         self.video_test = VideoHandler(_LIST_VIDEOS[0])
         return super().setUp()
     
-    def raise_error_if_url_value_is_not_str(self):
+    def test_raise_error_if_url_value_is_not_str(self):
         with self.assertRaises(AssertionError):
             url_validator(1)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main(verbosity=2)
