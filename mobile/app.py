@@ -16,7 +16,16 @@ def main(page: ft.Page):
         ],
         alignment=ft.MainAxisAlignment.CENTER,
     )
-    
+
+    def download_video_event(e):
+        page.clean()
+
+    def download_audio_event(e):
+        ...
+        
+    def download_playlist_event(e):
+        ...
+
     def submit_link(e):
         if not url_input.value or not url_validator(url_input.value):
             url_input.error_text = "Cole aqui uma URL valida!"
@@ -24,10 +33,19 @@ def main(page: ft.Page):
         else:
             link_video = url_input.value
             page.clean()
+            page.add(
+                ft.Column(
+                    [ft.ProgressRing(), ft.Text("Carregando...")], 
+                    horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                ),
+            )
             
             yt_manager = VideoHandler(link_video)
             page.add(
-                ft.Text(f"Link do video: {link_video}\ntitulo do video: {yt_manager.get_title}\nlink thumb: {yt_manager.get_thumbnail_url}")
+                ft.Text(f"{yt_manager.get_title}\nlink thumb: {yt_manager.get_thumbnail_url}"),
+                ft.ElevatedButton("Baixar video", on_click=download_video_event),
+                ft.ElevatedButton("Baixar audio"),
+                ft.ElevatedButton("Baixar playlist")
             )
 
     url_input = ft.TextField(label="URL youtube")
