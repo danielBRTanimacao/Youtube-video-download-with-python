@@ -27,7 +27,7 @@ def main(page: ft.Page):
             
             yt_manager = VideoHandler(link_video)
             page.add(
-                ft.Text(f"Link do video: {link_video}\ntitulo do video:")
+                ft.Text(f"Link do video: {link_video}\ntitulo do video: {yt_manager.get_title}\nlink thumb: {yt_manager.get_thumbnail_url}")
             )
 
     url_input = ft.TextField(label="URL youtube")

@@ -5,14 +5,14 @@ class VideoHandler:
     def __init__(self, link: str):
         self.yt = YouTube(link)
 
-    def video_download(self) -> str:
-        return "making download video"
+    def video_download(self) -> bool:
+        return True
 
-    def audio_download(self) -> str:
-        return "making download audio"
+    def audio_download(self) -> bool:
+        return True
 
-    def playlist_download(self) -> str:
-        return "downloading a playlist"
+    def playlist_download(self) -> bool:
+        return True
 
     @property
     def get_title(self) -> str:
