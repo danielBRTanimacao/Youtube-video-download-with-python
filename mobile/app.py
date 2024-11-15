@@ -19,6 +19,11 @@ def main(page: ft.Page):
 
     def loading(e):
         page.clean()
+        loading_component = ft.Column(
+            [ft.ProgressRing(), ft.Text("Carregando...")],
+            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+        )
+        page.add(loading_component)
 
     def download_video_event(e):
         page.clean()
@@ -36,12 +41,6 @@ def main(page: ft.Page):
         else:
             link_video = url_input.value
 
-            page.clean()
-            loading_component = ft.Column(
-                [ft.ProgressRing(), ft.Text("Carregando...")],
-                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-            )
-            page.add(loading_component)
             page.update()
             
             yt_manager = VideoHandler(link_video)
