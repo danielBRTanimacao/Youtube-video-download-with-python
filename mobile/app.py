@@ -31,18 +31,10 @@ def main(page: ft.Page):
             url_input.error_text = "Cole aqui uma URL valida!"
             page.update()
         else:
-            link_video = url_input.value
-
-            page.clean()
-            loading_component = ft.Column(
-                [ft.ProgressRing(), ft.Text("Carregando...")],
-                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-            )
-            page.add(loading_component)
-            page.update()
-            
-            yt_manager = VideoHandler(link_video)
             page.clean()    
+            link_video = url_input.value
+            yt_manager = VideoHandler(link_video)
+            
             page.add(
                 ft.Container(
                     ft.Image(src=yt_manager.get_thumbnail_url,

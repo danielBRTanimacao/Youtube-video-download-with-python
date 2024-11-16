@@ -19,7 +19,7 @@ class VideoHandler:
         try:
             return self.yt.title
         except PytubeError:
-            return f"Error ao buscar titulo\nDetalhe: Não foi possivel carregar o titulo do video"
+            return f"Não foi possivel carregar o titulo do video"
     
     @property
     def get_thumbnail_url(self) -> str:
