@@ -17,40 +17,57 @@ def main(page: ft.Page):
         alignment=ft.MainAxisAlignment.CENTER,
     )
 
-    def download_video_event(e):
-        page.clean()
-
-    def download_audio_event(e):
-        ...
-        
-    def download_playlist_event(e):
-        ...
-
     def submit_link(e):
         if not url_input.value or not url_validator(url_input.value):
             url_input.error_text = "Cole aqui uma URL valida!"
             page.update()
         else:
+            def download_video_event(e):
+                page.clean()
+                page.add(ft.Text(f"Título: {yt_manager.get_title}", size=20),)
+
+            def download_audio_event(e):
+                ...
+                
+            def download_playlist_event(e):
+                ...
+
             page.clean()    
             link_video = url_input.value
             yt_manager = VideoHandler(link_video)
-            
+
             page.add(
                 ft.Container(
-                    ft.Image(src=yt_manager.get_thumbnail_url,
-                        width=900,
-                        height=400,
-                        fit=ft.ImageFit.CONTAIN,
+                    ft.Column(
+                        [
+                            ft.Container(
+                                ft.Image(
+                                    src=yt_manager.get_thumbnail_url,
+                                    width=900,
+                                    height=400,
+                                    fit=ft.ImageFit.CONTAIN,
+                                ),
+                                alignment=ft.alignment.center,
+                            ),
+                            ft.Container(
+                                ft.Text(f"Título: {yt_manager.get_title}", size=20),
+                                alignment=ft.alignment.center,
+                            ),
+                            ft.Row(
+                                [
+                                    ft.ElevatedButton("Baixar vídeo", on_click=download_video_event),
+                                    ft.ElevatedButton("Baixar áudio", on_click=download_audio_event),
+                                    ft.ElevatedButton("Baixar playlist", on_click=download_playlist_event),
+                                ],
+                                alignment=ft.MainAxisAlignment.CENTER,
+                                spacing=10,
+                            ),
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        spacing=20,
                     ),
-                    alignment=ft.alignment.center
-                ),
-                ft.Container(
-                    ft.Text(f"Título: {yt_manager.get_title}", size=20),
-                    alignment=ft.alignment.center
-                ),
-                ft.ElevatedButton("Baixar vídeo", on_click=download_video_event),
-                ft.ElevatedButton("Baixar áudio"),
-                ft.ElevatedButton("Baixar playlist"),
+                    alignment=ft.alignment.center,
+                )
             )
             page.update()
 
