@@ -1,3 +1,4 @@
+from time import sleep
 import flet as ft
 
 from utils.validators import url_validator
@@ -24,7 +25,18 @@ def main(page: ft.Page):
         else:
             def download_video_event(e):
                 page.clean()
-                page.add(ft.Text(f"Título: {yt_manager.get_title}", size=20),)
+
+                pb = ft.ProgressBar(width=400)
+                page.add(
+                    ft.Text(YT_MANAGER.get_best_av, style="headlineSmall"),
+                    ft.Text("Fazendo download do vídeo", style="headlineSmall"),
+                    ft.Column([ ft.Text("Doing something..."), pb]),
+                )
+
+                for i in range(0, 101):
+                    pb.value = i * 0.01
+                    sleep(0.1)
+                    page.update()
 
             def download_audio_event(e):
                 ...
@@ -34,7 +46,7 @@ def main(page: ft.Page):
 
             page.clean()    
             link_video = url_input.value
-            yt_manager = VideoHandler(link_video)
+            YT_MANAGER = VideoHandler(link_video)
 
             page.add(
                 ft.Container(
@@ -42,7 +54,7 @@ def main(page: ft.Page):
                         [
                             ft.Container(
                                 ft.Image(
-                                    src=yt_manager.get_thumbnail_url,
+                                    src=YT_MANAGER.get_thumbnail_url,
                                     width=900,
                                     height=400,
                                     fit=ft.ImageFit.CONTAIN,
@@ -50,7 +62,7 @@ def main(page: ft.Page):
                                 alignment=ft.alignment.center,
                             ),
                             ft.Container(
-                                ft.Text(f"Título: {yt_manager.get_title}", size=20),
+                                ft.Text(f"Título: {YT_MANAGER.get_title}", size=20),
                                 alignment=ft.alignment.center,
                             ),
                             ft.Row(

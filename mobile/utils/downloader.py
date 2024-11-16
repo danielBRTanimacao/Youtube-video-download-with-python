@@ -13,6 +13,10 @@ class VideoHandler:
 
     def playlist_download(self) -> bool:
         return True
+    
+    @property
+    def get_best_av(self) -> str:
+        return f"Qualidade: {self.yt.streams.get_highest_resolution()}"
 
     @property
     def get_title(self) -> str:
