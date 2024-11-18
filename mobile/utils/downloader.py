@@ -41,3 +41,13 @@ class VideoHandler:
     def get_thumbnail_url(self) -> str:
         return self._url
     
+
+if __name__ == "__main__":
+    LINK = "https://www.youtube.com/watch?v=hljmj9KrlXg"
+    yth = VideoHandler(LINK)
+    print(yth.get_thumbnail_url)
+    print(yth.get_title)
+    print(yth.audio_download())
+    # print(yth.video_download())
+    print(yth.playlist_download())
+    print(yth.streams)
