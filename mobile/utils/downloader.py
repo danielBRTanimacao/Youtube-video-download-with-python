@@ -7,9 +7,13 @@ class VideoHandler:
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
         }
         self._url = link
+        self._output_file = "videos-downloads"
 
     def video_download(self) -> bool:
-        return True
+        response = requests.get(self.streams, stream=True)
+        if response.status_code == 200: 
+            with open(f"{self.get_title}.mp4", 'wb') as file:
+                pass
 
     def audio_download(self) -> bool:
         return True
